@@ -47,6 +47,16 @@ class _DigitalPetAppState extends State<DigitalPetApp> {
       }
     });
   }
+  Color _moodColor(int happinessLevel) {
+    if (happinessLevel > 70) {
+      return Colors.green;
+    } else if (happinessLevel >= 30) {
+      return Colors.yellow;
+    } else {
+      return Colors.red;
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +68,15 @@ class _DigitalPetAppState extends State<DigitalPetApp> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            // Dynamic color Change
+            ColorFiltered(
+              colorFilter: ColorFilter.mode(
+                _moodColor(happinessLevel),
+                BlendMode.modulate,
+              ),
+              child: Image.asset('assets/pet_image.png', height: 150),
+            ),
+
             Text('Name: $petName', style: TextStyle(fontSize: 20.0)),
             SizedBox(height: 16.0),
             Text('Happiness Level: $happinessLevel', style: TextStyle(fontSize: 20.0)),
