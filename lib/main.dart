@@ -47,6 +47,7 @@ class _DigitalPetAppState extends State<DigitalPetApp> {
       }
     });
   }
+  // Dynamic Color
   Color _moodColor(int happinessLevel) {
     if (happinessLevel > 70) {
       return Colors.green;
@@ -56,6 +57,17 @@ class _DigitalPetAppState extends State<DigitalPetApp> {
       return Colors.red;
     }
   }
+  // Mood Indicator
+  String _moodText() {
+    if (happinessLevel > 70) {
+      return "Happy 😄";
+    } else if (happinessLevel >= 30) {
+      return "Neutral 😐";
+    } else {
+      return "Unhappy 😢";
+    }
+  }
+
 
 
   @override
@@ -79,6 +91,10 @@ class _DigitalPetAppState extends State<DigitalPetApp> {
 
             Text('Name: $petName', style: TextStyle(fontSize: 20.0)),
             SizedBox(height: 16.0),
+
+            Text('Mood: ${_moodText()}', style: TextStyle(fontSize: 18),),
+            SizedBox(height: 16.0),
+
             Text('Happiness Level: $happinessLevel', style: TextStyle(fontSize: 20.0)),
             SizedBox(height: 16.0),
             Text('Hunger Level: $hungerLevel', style: TextStyle(fontSize: 20.0)),
