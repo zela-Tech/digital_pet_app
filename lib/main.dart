@@ -16,6 +16,8 @@ class _DigitalPetAppState extends State<DigitalPetApp> {
   int happinessLevel = 50;
   int hungerLevel = 50;
 
+  TextEditingController _nameController = TextEditingController();
+
   void _playWithPet() {
     setState(() {
       happinessLevel += 10;
@@ -88,6 +90,21 @@ class _DigitalPetAppState extends State<DigitalPetApp> {
               ),
               child: Image.asset('assets/pet_image.png', height: 150),
             ),
+
+            //Name Customization
+            TextField(
+              controller: _nameController,
+              decoration: InputDecoration(labelText: "Enter Pet Name"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  petName = _nameController.text;
+                });
+              },
+              child: Text("Set Name"),
+            ),
+
 
             Text('Name: $petName', style: TextStyle(fontSize: 20.0)),
             SizedBox(height: 16.0),
