@@ -62,16 +62,20 @@ class _DigitalPetAppState extends State<DigitalPetApp> {
   void _playWithPet() {
     setState(() {
       happinessLevel += 10;
+      energyLevel -= 10;
       _updateHunger();
     });
   }
 
+
   void _feedPet() {
     setState(() {
       hungerLevel -= 10;
+      energyLevel += 5;
       _updateHappiness();
     });
   }
+
 
   void _updateHappiness() {
     if (hungerLevel < 30) {
