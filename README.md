@@ -1,16 +1,8 @@
 # digital_pet_app
+A Flutter-based interactive virtual pet application that simulates real-time pet care mechanics including hunger, happiness, energy, and win/loss game logic.
 
-A new Flutter project.
+This project demonstrates state management, timers, UI rebuilding, conditional rendering, and basic game mechanics using Flutter.
 
-## Getting Started
+# Commit History
+<img width="577" height="395" alt="Screenshot 2026-02-18 232253" src="https://github.com/user-attachments/assets/efb01535-4d85-4729-900c-24a8b6f9af13" />
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
