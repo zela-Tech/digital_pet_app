@@ -17,6 +17,8 @@ class _DigitalPetAppState extends State<DigitalPetApp> {
   String petName = "Your Pet";
   int happinessLevel = 50;
   int hungerLevel = 50;
+  int happyDuration = 0;
+
 
   TextEditingController _nameController = TextEditingController();
   
@@ -29,6 +31,22 @@ class _DigitalPetAppState extends State<DigitalPetApp> {
       setState(() {
         hungerLevel += 5;
         if (hungerLevel > 100) hungerLevel = 100;
+
+        //Win Condition
+        if (happinessLevel > 80) {
+          happyDuration += 30;
+          if (happyDuration >= 180) {
+            _showWinDialog();
+          }
+        }
+
+        //Loss condition
+        if (hungerLevel == 100 && happinessLevel <= 10) {
+          _showLossDialog();
+        }
+
+
+
       });
     });
   }
@@ -91,6 +109,26 @@ class _DigitalPetAppState extends State<DigitalPetApp> {
     }
   }
 
+
+  //Win/Loss Conditions dialog
+  void _showWinDialog() {
+    showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: Text("You Win! 🎉"),
+        content: Text("Your pet is thriving!"),
+      ),
+    );
+  }
+  void _showLossDialog() {
+    showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: Text("Game Over 💀"),
+        content: Text("Your pet was too hungry."),
+      ),
+    );
+  }
 
 
   @override
