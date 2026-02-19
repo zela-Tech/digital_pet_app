@@ -19,6 +19,8 @@ class _DigitalPetAppState extends State<DigitalPetApp> {
   int hungerLevel = 50;
   int happyDuration = 0;
 
+  int energyLevel = 100; // Energy bar
+
 
   TextEditingController _nameController = TextEditingController();
   
@@ -173,8 +175,15 @@ class _DigitalPetAppState extends State<DigitalPetApp> {
 
             Text('Happiness Level: $happinessLevel', style: TextStyle(fontSize: 20.0)),
             SizedBox(height: 16.0),
+
             Text('Hunger Level: $hungerLevel', style: TextStyle(fontSize: 20.0)),
             SizedBox(height: 32.0),
+
+            //Energy bar widget
+            LinearProgressIndicator(value: energyLevel / 100,),
+            Text("Energy: $energyLevel"),
+            SizedBox(height: 16.0),
+
             ElevatedButton(
               onPressed: _playWithPet,
               child: Text('Play with Your Pet'),
