@@ -1,3 +1,4 @@
+// Student Name: Adom Zelalem
 import 'package:flutter/material.dart';
 import 'dart:async';
 
@@ -38,17 +39,18 @@ class _DigitalPetAppState extends State<DigitalPetApp> {
         if (happinessLevel > 80) {
           happyDuration += 30;
           if (happyDuration >= 180) {
+            _timer?.cancel();
             _showWinDialog();
           }
+        } else{
+          happyDuration = 0;
         }
 
         //Loss condition
-        if (hungerLevel == 100 && happinessLevel <= 10) {
+        if (hungerLevel == 100 && happinessLevel == 10) {
+          _timer?.cancel();
           _showLossDialog();
         }
-
-
-
       });
     });
   }
@@ -147,14 +149,6 @@ class _DigitalPetAppState extends State<DigitalPetApp> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            // Dynamic color Change
-            ColorFiltered(
-              colorFilter: ColorFilter.mode(
-                _moodColor(happinessLevel),
-                BlendMode.modulate,
-              ),
-              child: Image.asset('assets/pet_image.png', height: 150),
-            ),
 
             //Name Customization
             TextField(
@@ -169,7 +163,17 @@ class _DigitalPetAppState extends State<DigitalPetApp> {
               },
               child: Text("Set Name"),
             ),
+            SizedBox(height: 16.0),
 
+            // Dynamic color Change
+            ColorFiltered(
+              colorFilter: ColorFilter.mode(
+                _moodColor(happinessLevel),
+                BlendMode.modulate,
+              ),
+              child: Image.asset('assets/pet_image.png', height: 150),
+            ),
+            SizedBox(height: 16.0),
 
             Text('Name: $petName', style: TextStyle(fontSize: 20.0)),
             SizedBox(height: 16.0),
